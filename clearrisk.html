@@ -177,13 +177,13 @@ Rules: PROHIBITED=social scoring/biometric surveillance/subliminal manipulation.
       body: JSON.stringify({ messages: [{ role:'user', content: prompt }] })
     });
     const data = await response.json();
-    const raw = data.content.map(i => i.text||'').join('').replace(/```json|```/g,'').trim();
+    console.log("API response:", JSON.stringify(data)); const raw = data.content ? data.content.map(i => i.text||"").join("").replace(/```json|```/g,"").trim() : JSON.stringify(data);
     const result = JSON.parse(raw);
     renderResult(result);
   } catch(e) {
     document.getElementById('loading-state').classList.remove('show');
     show('input-state');
-    alert('Something went wrong. Please try again.');
+    alert('Error: ' + e.message + ' | ' + JSON.stringify(e));
   }
 }
 
