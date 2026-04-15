@@ -9,84 +9,64 @@
 <style>
 :root{--ink:#0a0a12;--gold:#c9a84c;--goldf:#f0d88a;--red:#c0392b;--muted:#6b6b78;--green:#1a7a4a;--orange:#d35400;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'DM Sans',sans-serif;background:#0a0a12;color:#f5f3ee;min-height:100vh;}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(201,168,76,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(192,57,43,0.06) 0%,transparent 60%);pointer-events:none;z-index:0;}
-
+body{font-family:"DM Sans",sans-serif;background:#0a0a12;color:#f5f3ee;min-height:100vh;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(201,168,76,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(192,57,43,0.06) 0%,transparent 60%);pointer-events:none;z-index:0;}
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;position:sticky;top:0;z-index:100;background:rgba(10,10,18,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);}
-.logo{font-family:‘Syne’,sans-serif;font-weight:800;font-size:1.2rem;color:#c9a84c;text-decoration:none;}
+.logo{font-family:"Syne",sans-serif;font-weight:800;font-size:1.2rem;color:#c9a84c;text-decoration:none;}
 .logo span{color:#fff;}
 .nav-right{display:flex;align-items:center;gap:1rem;}
 .nav-badge{font-size:0.72rem;background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);color:#e07a72;padding:.25rem .7rem;border-radius:99px;font-weight:700;}
 .nav-home{font-size:0.82rem;color:#888;text-decoration:none;}
-.nav-home:hover{color:#c9a84c;}
-
 .hero{position:relative;z-index:1;text-align:center;padding:4rem 5% 2.5rem;max-width:720px;margin:0 auto;}
 .hero-tag{display:inline-block;background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.4);color:#e07a72;font-size:0.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:99px;margin-bottom:1.2rem;}
-h1{font-family:‘Syne’,sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:.8rem;}
+h1{font-family:"Syne",sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:.8rem;}
 h1 em{color:#c9a84c;font-style:normal;}
 .hero p{font-size:1rem;color:#aaa;max-width:46ch;margin:0 auto 2.5rem;}
-
 .classifier{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 5% 5rem;}
 .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2.2rem;backdrop-filter:blur(8px);}
-
 .input-label{font-size:0.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c9a84c;margin-bottom:.7rem;display:block;}
-textarea{width:100%;min-height:150px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:1.1rem;color:#fff;font-family:‘DM Sans’,sans-serif;font-size:0.95rem;line-height:1.6;resize:vertical;outline:none;transition:border-color .2s;}
+textarea{width:100%;min-height:150px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:1.1rem;color:#fff;font-family:"DM Sans",sans-serif;font-size:0.95rem;line-height:1.6;resize:vertical;outline:none;transition:border-color .2s;}
 textarea:focus{border-color:#c9a84c;}
 textarea::placeholder{color:#555;}
-
 .examples{margin:.7rem 0 1.3rem;}
 .ex-label{font-size:0.72rem;color:#555;margin-bottom:.5rem;}
 .chips{display:flex;gap:.4rem;flex-wrap:wrap;}
 .chip{font-size:0.73rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:#bbb;padding:.28rem .75rem;border-radius:99px;cursor:pointer;transition:all .2s;}
 .chip:hover{border-color:#c9a84c;color:#c9a84c;}
-
-.btn-classify{width:100%;background:#c9a84c;color:#0a0a12;font-family:‘Syne’,sans-serif;font-weight:800;font-size:1rem;border:none;padding:.95rem;border-radius:10px;cursor:pointer;transition:background .2s;margin-top:.4rem;}
-.btn-classify:hover:not(:disabled){background:#f0d88a;}
-.btn-classify:disabled{background:#333;color:#666;cursor:not-allowed;}
-
+.btn-classify{width:100%;background:#c9a84c;color:#0a0a12;font-family:"Syne",sans-serif;font-weight:800;font-size:1rem;border:none;padding:.95rem;border-radius:10px;cursor:pointer;transition:background .2s;margin-top:.4rem;}
+.btn-classify:hover{background:#f0d88a;}
 .loading{display:none;text-align:center;padding:3rem 1rem;}
 .loading.show{display:block;}
 .spinner{width:42px;height:42px;border:3px solid rgba(201,168,76,0.2);border-top-color:#c9a84c;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1.2rem;}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading p{color:#777;font-size:0.88rem;}
-
 .result{display:none;}
 .result.show{display:block;animation:up .4s ease;}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-
 .tier-header{display:flex;align-items:center;gap:1rem;border-radius:12px;padding:1.3rem;margin-bottom:1.4rem;flex-wrap:wrap;}
-.tier-badge{font-family:‘Syne’,sans-serif;font-size:0.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border-radius:99px;white-space:nowrap;}
-.tier-name{font-family:‘Syne’,sans-serif;font-size:1.25rem;font-weight:800;}
+.tier-badge{font-family:"Syne",sans-serif;font-size:0.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border-radius:99px;white-space:nowrap;}
+.tier-name{font-family:"Syne",sans-serif;font-size:1.25rem;font-weight:800;}
 .tier-sub{font-size:0.82rem;color:#999;margin-top:.2rem;}
 .urgency-label{font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem;}
-.urgency-val{font-family:‘Syne’,sans-serif;font-weight:800;}
-
+.urgency-val{font-family:"Syne",sans-serif;font-weight:800;}
 .section-title{font-size:0.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c9a84c;margin-bottom:.7rem;}
 .explanation{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:1.1rem;font-size:0.9rem;line-height:1.7;color:#ccc;margin-bottom:1.3rem;}
-
 .list{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.3rem;}
 .list-item{display:flex;align-items:flex-start;gap:.7rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:.8rem .9rem;font-size:0.87rem;color:#ccc;}
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:.38rem;}
 .check-box{width:18px;height:18px;border:2px solid rgba(201,168,76,0.35);border-radius:4px;flex-shrink:0;font-size:0.65rem;color:#c9a84c;display:flex;align-items:center;justify-content:center;}
-
-.cta-strip{background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.25);border-radius:12px;padding:1.5rem;text-align:center;margin-bottom:1rem;}
-.cta-strip h3{font-family:‘Syne’,sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.4rem;}
-.cta-strip p{font-size:0.83rem;color:#999;margin-bottom:1.1rem;}
+.cta-strip{background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.25);border-radius:12px;padding:1.4rem;text-align:center;margin-bottom:1rem;}
+.cta-strip h3{font-family:"Syne",sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.4rem;}
+.cta-strip p{font-size:0.82rem;color:#888;margin-bottom:1.1rem;}
 .cta-btns{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;}
 .btn-gold{background:#c9a84c;color:#0a0a12;font-weight:700;font-size:0.85rem;padding:.55rem 1.3rem;border-radius:6px;text-decoration:none;display:inline-block;}
 .btn-ghost{color:#c9a84c;font-size:0.85rem;font-weight:600;border:1px solid rgba(201,168,76,0.4);padding:.55rem 1.3rem;border-radius:6px;text-decoration:none;display:inline-block;}
-
 .btn-new{width:100%;background:transparent;color:#666;font-size:0.85rem;border:1px solid rgba(255,255,255,0.1);padding:.65rem;border-radius:8px;cursor:pointer;margin-top:.8rem;transition:all .2s;}
-.btn-new:hover{color:#ccc;border-color:rgba(255,255,255,0.2);}
-
 .trust{position:relative;z-index:1;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;padding:1.2rem 5%;border-top:1px solid rgba(255,255,255,0.07);font-size:0.72rem;color:#444;letter-spacing:.05em;text-transform:uppercase;}
-
 @media(max-width:600px){.hero{padding:2.5rem 5% 1.5rem;}.card{padding:1.4rem;}.cta-btns{flex-direction:column;}}
 </style>
-
 </head>
 <body>
-
 <nav>
   <a class="logo" href="/">AI Act <span>Shield</span></a>
   <div class="nav-right">
@@ -94,157 +74,129 @@ textarea::placeholder{color:#555;}
     <div class="nav-badge">⏰ 110 days to deadline</div>
   </div>
 </nav>
-
 <div class="hero">
   <div class="hero-tag">Free EU AI Act Risk Classifier</div>
   <h1>Know your <em>AI risk tier</em> in 60 seconds.</h1>
   <p>Paste your AI use case. Get your risk classification, exact obligations, and a 30-day action checklist — instantly.</p>
 </div>
-
 <div class="classifier">
   <div class="card">
-
-```
-<div id="input-state">
-  <label class="input-label">Describe your AI use case</label>
-  <textarea id="use-case" placeholder="e.g. We use ChatGPT to help screen CVs and rank job applicants before a human recruiter reviews them. We run a small recruitment agency in Spain with 8 staff."></textarea>
-
-  <div class="examples">
-    <div class="ex-label">Try an example:</div>
-    <div class="chips">
-      <span class="chip" onclick="fill('I use ChatGPT to write marketing emails and social media posts for my freelance clients in Germany.')">Freelance copywriter</span>
-      <span class="chip" onclick="fill('My HR software automatically screens and ranks job applicants before any human sees them. We are a recruitment agency in Portugal.')">Recruitment agency</span>
-      <span class="chip" onclick="fill('I built a chatbot for my e-commerce store that answers customer questions about orders and returns 24/7 with no human supervision.')">E-commerce chatbot</span>
-      <span class="chip" onclick="fill('We use an AI credit scoring tool to automatically approve or reject loan applications for our fintech startup serving EU customers.')">Fintech credit scoring</span>
+    <div id="input-state">
+      <label class="input-label">Describe your AI use case</label>
+      <textarea id="use-case" placeholder="e.g. We use ChatGPT to help screen CVs and rank job applicants before a human recruiter reviews them. We run a small recruitment agency in Spain with 8 staff."></textarea>
+      <div class="examples">
+        <div class="ex-label">Try an example:</div>
+        <div class="chips">
+          <span class="chip" onclick="fill(this)">Freelance copywriter</span>
+          <span class="chip" onclick="fill(this)">Recruitment agency</span>
+          <span class="chip" onclick="fill(this)">E-commerce chatbot</span>
+          <span class="chip" onclick="fill(this)">Fintech credit scoring</span>
+        </div>
+      </div>
+      <button class="btn-classify" onclick="classify()">Classify My AI Use Case →</button>
     </div>
-  </div>
-
-  <button class="btn-classify" id="classify-btn" onclick="classify()">Classify My AI Use Case →</button>
-</div>
-
-<div class="loading" id="loading-state">
-  <div class="spinner"></div>
-  <p>Analysing your use case against EU AI Act Annex III...</p>
-</div>
-
-<div class="result" id="result-state"></div>
-```
-
+    <div class="loading" id="loading-state">
+      <div class="spinner"></div>
+      <p>Analysing your use case against EU AI Act Annex III...</p>
+    </div>
+    <div class="result" id="result-state"></div>
   </div>
 </div>
-
 <div class="trust">
   <span>⚖️ Based on official EU AI Act text</span>
   <span>🔒 No data stored</span>
   <span>⚡ Instant results</span>
   <span>📅 Deadline: 2 Aug 2026</span>
 </div>
-
 <script>
-const TIER = {
-  MINIMAL:    {bg:'rgba(26,122,74,0.12)',border:'rgba(26,122,74,0.3)',badge:'#1a7a4a',badgeText:'#fff',dot:'#1a7a4a'},
-  LIMITED:    {bg:'rgba(201,168,76,0.12)',border:'rgba(201,168,76,0.3)',badge:'#c9a84c',badgeText:'#0a0a12',dot:'#c9a84c'},
-  HIGH:       {bg:'rgba(211,84,0,0.12)',border:'rgba(211,84,0,0.3)',badge:'#d35400',badgeText:'#fff',dot:'#d35400'},
-  PROHIBITED: {bg:'rgba(192,57,43,0.15)',border:'rgba(192,57,43,0.4)',badge:'#c0392b',badgeText:'#fff',dot:'#c0392b'},
+const EXAMPLES = {
+  "Freelance copywriter": "I use ChatGPT to write marketing emails and social media posts for my freelance clients in Germany.",
+  "Recruitment agency": "My HR software automatically screens and ranks job applicants before any human sees them. We are a recruitment agency in Portugal.",
+  "E-commerce chatbot": "I built a chatbot for my e-commerce store that answers customer questions about orders and returns 24/7 with no human supervision.",
+  "Fintech credit scoring": "We use an AI credit scoring tool to automatically approve or reject loan applications for our fintech startup serving EU customers."
 };
-const URGENCY_COLOR = {LOW:'#1a7a4a',MEDIUM:'#c9a84c',HIGH:'#d35400',CRITICAL:'#c0392b'};
 
-function fill(text){ document.getElementById('use-case').value = text; }
+const TIER = {
+MINIMAL:    {bg:“rgba(26,122,74,0.12)”,border:“rgba(26,122,74,0.3)”,badge:”#1a7a4a”,badgeText:”#fff”,dot:”#1a7a4a”},
+LIMITED:    {bg:“rgba(201,168,76,0.12)”,border:“rgba(201,168,76,0.3)”,badge:”#c9a84c”,badgeText:”#0a0a12”,dot:”#c9a84c”},
+HIGH:       {bg:“rgba(211,84,0,0.12)”,border:“rgba(211,84,0,0.3)”,badge:”#d35400”,badgeText:”#fff”,dot:”#d35400”},
+PROHIBITED: {bg:“rgba(192,57,43,0.15)”,border:“rgba(192,57,43,0.4)”,badge:”#c0392b”,badgeText:”#fff”,dot:”#c0392b”},
+};
+const URGENCY = {LOW:”#1a7a4a”,MEDIUM:”#c9a84c”,HIGH:”#d35400”,CRITICAL:”#c0392b”};
 
-function show(id){ document.getElementById(id).style.display = 'block'; }
-function hide(id){ document.getElementById(id).style.display = 'none'; }
+function fill(el){ document.getElementById(“use-case”).value = EXAMPLES[el.textContent] || “”; }
 
 async function classify() {
-  const text = document.getElementById('use-case').value.trim();
-  if(text.length < 20){ alert('Please describe your AI use case in a bit more detail.'); return; }
+const text = document.getElementById(“use-case”).value.trim();
+if(text.length < 20){ alert(“Please describe your AI use case in more detail.”); return; }
 
-  hide('input-state');
-  document.getElementById('loading-state').classList.add('show');
+document.getElementById(“input-state”).style.display = “none”;
+document.getElementById(“loading-state”).classList.add(“show”);
 
-  const prompt = `You are an EU AI Act compliance expert. Analyse this AI use case and classify it under the EU AI Act risk framework.
+const prompt = `You are an EU AI Act compliance expert. Analyse this AI use case and classify it.
 
 USE CASE: ${text}
 
-Return ONLY valid JSON, no markdown, no backticks:
-{"tier":"MINIMAL|LIMITED|HIGH|PROHIBITED","tier_label":"...Risk","tier_sub":"one sentence what this tier means","explanation":"2-3 sentences why this tier applies with specific article or Annex III references","obligations":["Obligation 1","Obligation 2","Obligation 3"],"checklist":["Action 1 next 30 days","Action 2","Action 3","Action 4","Action 5"],"urgency":"LOW|MEDIUM|HIGH|CRITICAL"}
+Return ONLY valid JSON, no markdown:
+{“tier”:“MINIMAL”,“tier_label”:“Minimal Risk”,“tier_sub”:“one sentence”,“explanation”:“2-3 sentences with article references”,“obligations”:[“ob1”,“ob2”,“ob3”],“checklist”:[“c1”,“c2”,“c3”,“c4”,“c5”],“urgency”:“LOW”}
 
-Rules: PROHIBITED=social scoring/biometric surveillance/subliminal manipulation. HIGH=hiring/credit scoring/education/law enforcement/biometrics. LIMITED=chatbots interacting with users/AI generated content. MINIMAL=writing tools/spam filters/productivity tools.`;
+tier must be exactly one of: MINIMAL, LIMITED, HIGH, PROHIBITED
+urgency must be exactly one of: LOW, MEDIUM, HIGH, CRITICAL`;
 
-  try {
-    const response = await fetch('/.netlify/functions/classify', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ messages: [{ role:'user', content: prompt }] })
-    });
-    const data = await response.json();
-    console.log("API response:", JSON.stringify(data)); const raw = data.content ? data.content.map(i => i.text||"").join("").replace(/```json|```/g,"").trim() : JSON.stringify(data);
-    const result = JSON.parse(raw);
-    renderResult(result);
-  } catch(e) {
-    document.getElementById('loading-state').classList.remove('show');
-    show('input-state');
-    alert('Error: ' + e.message + ' | ' + JSON.stringify(e));
-  }
+try {
+const resp = await fetch(”/.netlify/functions/classify”, {
+method:“POST”,
+headers:{“Content-Type”:“application/json”},
+body: JSON.stringify({messages:[{role:“user”,content:prompt}]})
+});
+
+```
+if(!resp.ok){
+  const errText = await resp.text();
+  throw new Error("HTTP " + resp.status + ": " + errText.substring(0,100));
 }
 
-function renderResult(r) {
-  document.getElementById('loading-state').classList.remove('show');
-  const ts = TIER[r.tier] || TIER.MINIMAL;
-  const uc = URGENCY_COLOR[r.urgency] || '#c9a84c';
+const data = await resp.json();
 
-  const obligations = r.obligations.map(o => `
-    <div class="list-item">
-      <div class="dot" style="background:${ts.dot}"></div>
-      <span>${o}</span>
-    </div>`).join('');
-
-  const checklist = r.checklist.map(c => `
-    <div class="list-item">
-      <div class="check-box">☐</div>
-      <span>${c}</span>
-    </div>`).join('');
-
-  document.getElementById('result-state').innerHTML = `
-    <div class="tier-header" style="background:${ts.bg};border:1px solid ${ts.border}">
-      <div class="tier-badge" style="background:${ts.badge};color:${ts.badgeText}">${r.tier_label}</div>
-      <div style="flex:1">
-        <div class="tier-name">${r.tier_label}</div>
-        <div class="tier-sub">${r.tier_sub}</div>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div class="urgency-label">Urgency</div>
-        <div class="urgency-val" style="color:${uc}">${r.urgency}</div>
-      </div>
-    </div>
-
-    <div class="section-title">Why this classification</div>
-    <div class="explanation">${r.explanation}</div>
-
-    <div class="section-title">Your EU AI Act obligations</div>
-    <div class="list">${obligations}</div>
-
-    <div class="section-title">Your 30-day action checklist</div>
-    <div class="list">${checklist}</div>
-
-    <div class="cta-strip">
-      <h3>Get the complete documentation pack</h3>
-      <p>7 fill-in-the-blank templates covering every EU AI Act requirement — ready in one afternoon.</p>
-      <div class="cta-btns">
-        <a href="https://rougvie.gumroad.com/l/epdgz" target="_blank" class="btn-gold">Get the Kit — €45 →</a>
-        <a href="/" class="btn-ghost">Learn More</a>
-      </div>
-    </div>
-    <button class="btn-new" onclick="reset()">← Classify a different use case</button>`;
-
-  document.getElementById('result-state').classList.add('show');
+if(data.error){
+  throw new Error("API error: " + data.error);
 }
 
-function reset() {
-  document.getElementById('result-state').classList.remove('show');
-  document.getElementById('result-state').innerHTML = '';
-  document.getElementById('use-case').value = '';
-  show('input-state');
-  window.scrollTo({top:0,behavior:'smooth'});
+if(!data.content || !data.content[0]){
+  throw new Error("Unexpected response: " + JSON.stringify(data).substring(0,150));
+}
+
+const raw = data.content[0].text.replace(/```json|```/g,"").trim();
+const r = JSON.parse(raw);
+showResult(r);
+```
+
+} catch(e) {
+document.getElementById(“loading-state”).classList.remove(“show”);
+document.getElementById(“input-state”).style.display = “block”;
+alert(“Error: “ + e.message);
+}
+}
+
+function showResult(r) {
+document.getElementById(“loading-state”).classList.remove(“show”);
+const ts = TIER[r.tier] || TIER.MINIMAL;
+const uc = URGENCY[r.urgency] || “#c9a84c”;
+
+const obs = (r.obligations||[]).map(o=>`<div class="list-item"><div class="dot" style="background:${ts.dot}"></div><span>${o}</span></div>`).join(””);
+const chk = (r.checklist||[]).map(c=>`<div class="list-item"><div class="check-box">☐</div><span>${c}</span></div>`).join(””);
+
+document.getElementById(“result-state”).innerHTML = ` <div class="tier-header" style="background:${ts.bg};border:1px solid ${ts.border}"> <div class="tier-badge" style="background:${ts.badge};color:${ts.badgeText}">${r.tier_label||r.tier}</div> <div style="flex:1"><div class="tier-name">${r.tier_label||r.tier}</div><div class="tier-sub">${r.tier_sub||""}</div></div> <div style="text-align:right;flex-shrink:0"><div class="urgency-label">Urgency</div><div class="urgency-val" style="color:${uc}">${r.urgency}</div></div> </div> <div class="section-title">Why this classification</div> <div class="explanation">${r.explanation||""}</div> <div class="section-title">Your EU AI Act obligations</div> <div class="list">${obs}</div> <div class="section-title">Your 30-day action checklist</div> <div class="list">${chk}</div> <div class="cta-strip"> <h3>Get the complete documentation pack</h3> <p>7 fill-in-the-blank templates covering every EU AI Act requirement — ready in one afternoon.</p> <div class="cta-btns"> <a href="https://rougvie.gumroad.com/l/epdgz" target="_blank" class="btn-gold">Get the Kit — €45 →</a> <a href="/" class="btn-ghost">Learn More</a> </div> </div> <button class="btn-new" onclick="reset()">← Classify a different use case</button>`;
+
+document.getElementById(“result-state”).classList.add(“show”);
+}
+
+function reset(){
+document.getElementById(“result-state”).classList.remove(“show”);
+document.getElementById(“result-state”).innerHTML = “”;
+document.getElementById(“use-case”).value = “”;
+document.getElementById(“input-state”).style.display = “block”;
+window.scrollTo({top:0,behavior:“smooth”});
 }
 </script>
 
