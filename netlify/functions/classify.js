@@ -34,7 +34,7 @@ body: JSON.stringify({ error: “API key not configured” }),
 };
 }
 
-const prompt = “You are an EU AI Act compliance expert. Classify the following AI use case according to the EU AI Act risk tiers.\n\nUse case: “ + useCase + “\n\nRespond in this exact JSON format (no markdown, no backticks, just raw JSON):\n{\n  "riskTier": "Unacceptable Risk or High Risk or Limited Risk or Minimal Risk",\n  "explanation": "2-3 sentence explanation of why this tier applies",\n  "obligations": ["obligation 1", "obligation 2", "obligation 3"],\n  "checklist": ["action 1", "action 2", "action 3", "action 4", "action 5"],\n  "deadline": "Key compliance deadline relevant to this tier"\n}”;
+const prompt = "You are an EU AI Act compliance expert. Classify the following AI use case: " + useCase + ". Respond in raw JSON only with these fields: riskTier, explanation, obligations (array), checklist (array), deadline.";
 
 try {
 const response = await fetch(“https://api.anthropic.com/v1/messages”, {
@@ -51,7 +51,6 @@ messages: [{ role: “user”, content: prompt }],
 }),
 });
 
-```
 const data = await response.json();
 
 if (!response.ok) {
