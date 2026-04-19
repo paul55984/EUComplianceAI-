@@ -1,4 +1,3 @@
-
 exports.handler = async function (event) {
 if (event.httpMethod !== “POST”) {
 return {
@@ -7,9 +6,9 @@ body: JSON.stringify({ error: “Method Not Allowed” }),
 };
 }
 
-let useCase = “”;
+var useCase = “”;
 try {
-const body = JSON.parse(event.body);
+var body = JSON.parse(event.body);
 useCase = body.useCase || “”;
 } catch (e) {
 return {
@@ -25,7 +24,7 @@ body: JSON.stringify({ error: “No use case provided” }),
 };
 }
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+var ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 if (!ANTHROPIC_API_KEY) {
 return {
@@ -34,10 +33,10 @@ body: JSON.stringify({ error: “API key not configured” }),
 };
 }
 
-const prompt = "You are an EU AI Act compliance expert. Classify the following AI use case: " + useCase + ". Respond in raw JSON only with these fields: riskTier, explanation, obligations (array), checklist (array), deadline.";
+var prompt = “You are an EU AI Act compliance expert. Classify the following AI use case according to the EU AI Act risk tiers. Use case: “ + useCase + “ Respond in this exact JSON format with no markdown and no backticks: { "riskTier": "High Risk", "explanation": "your explanation here", "obligations": ["obligation 1", "obligation 2", "obligation 3"], "checklist": ["action 1", "action 2", "action 3", "action 4", "action 5"], "deadline": "your deadline here" }”;
 
 try {
-const response = await fetch(“https://api.anthropic.com/v1/messages”, {
+var response = await fetch(“https://api.anthropic.com/v1/messages”, {
 method: “POST”,
 headers: {
 “Content-Type”: “application/json”,
@@ -51,18 +50,21 @@ messages: [{ role: “user”, content: prompt }],
 }),
 });
 
-const data = await response.json();
+```
+var data = await response.json();
 
 if (!response.ok) {
   return {
     statusCode: 500,
-    body: JSON.stringify({ error: data.error && data.error.message ? data.error.message : "Anthropic API error" }),
+    body: JSON.stringify({ error: "Anthropic API error" }),
   };
 }
 
-const text = data.content[0].text.trim();
-const clean = text.replace(/^```[\w]*\n?/, "").replace(/```$/, "").trim();
-const result = JSON.parse(clean);
+var text = data.content[0].text.trim();
+var jsonStart = text.indexOf("{");
+var jsonEnd = text.lastIndexOf("}");
+var clean = text.slice(jsonStart, jsonEnd + 1);
+var result = JSON.parse(clean);
 
 return {
   statusCode: 200,
