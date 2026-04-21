@@ -62,7 +62,7 @@ textarea::placeholder{color:#555;}
 .btn-ghost{color:#c9a84c;font-size:0.85rem;font-weight:600;border:1px solid rgba(201,168,76,0.4);padding:.55rem 1.3rem;border-radius:6px;text-decoration:none;display:inline-block;}
 .btn-new{width:100%;background:transparent;color:#666;font-size:0.85rem;border:1px solid rgba(255,255,255,0.1);padding:.65rem;border-radius:8px;cursor:pointer;margin-top:.8rem;transition:all .2s;}
 .trust{position:relative;z-index:1;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;padding:1.2rem 5%;border-top:1px solid rgba(255,255,255,0.07);font-size:0.72rem;color:#444;letter-spacing:.05em;text-transform:uppercase;}
-@media(max-width:600px){.hero{padding:2.5rem 5% 1.5rem;}.card{padding:1.4rem;}.cta-btns{flex-direction:column;}}
+.email-gate{text-align:center;padding:1rem 0;}.email-gate h2{font-family:"Syne",sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:.5rem;}.email-gate p{font-size:0.88rem;color:#888;margin-bottom:1.4rem;}.email-row{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;}.email-input{flex:1;min-width:200px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:.85rem 1rem;color:#fff;font-family:"DM Sans",sans-serif;font-size:0.95rem;outline:none;transition:border-color .2s;}.email-input:focus{border-color:#c9a84c;}.email-input::placeholder{color:#555;}.btn-submit{background:#c9a84c;color:#0a0a12;font-family:"Syne",sans-serif;font-weight:800;font-size:0.95rem;border:none;padding:.85rem 1.6rem;border-radius:10px;cursor:pointer;white-space:nowrap;}.btn-submit:hover{background:#f0d88a;}.privacy-note{font-size:0.7rem;color:#444;margin-top:.8rem;}@media(max-width:600px){.hero{padding:2.5rem 5% 1.5rem;}.card{padding:1.4rem;}.cta-btns{flex-direction:column;}.email-row{flex-direction:column;}}
 </style>
 </head>
 <body>
@@ -98,7 +98,7 @@ textarea::placeholder{color:#555;}
       <div class="spinner"></div>
       <p>Analysing your use case against EU AI Act Annex III...</p>
     </div>
-    <div class="result" id="result-state"></div>
+    <div id="email-gate-state" style="display:none"><div class="email-gate"><h2>Your results are ready</h2><p>Enter your email to unlock your risk classification and 30-day action checklist.</p><div class="email-row"><input class="email-input" id="email-input" type="email" placeholder="you@company.com" /><button class="btn-submit" id="email-submit-btn">Show My Results</button></div><p class="privacy-note">No spam. Unsubscribe anytime. We store your email securely.</p></div></div><div class="result" id="result-state"></div>
   </div>
 </div>
 <div class="trust">
@@ -139,16 +139,37 @@ function fillExample(name) {
   document.getElementById("use-case").value = EXAMPLES[name] || "";
 }
 
+var pendingText = "";
+
 function runClassify() {
   var text = document.getElementById("use-case").value.trim();
   if (text.length < 20) {
     alert("Please describe your AI use case in more detail.");
     return;
   }
-
+  pendingText = text;
   document.getElementById("input-state").style.display = "none";
+  document.getElementById("email-gate-state").style.display = "block";
+  document.getElementById("email-submit-btn").addEventListener("click", function() { submitEmail(); });
+}
+
+function submitEmail() {
+  var email = document.getElementById("email-input").value.trim();
+  if (email.indexOf("@") === -1 || email.length < 5) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  document.getElementById("email-gate-state").style.display = "none";
   document.getElementById("loading-state").classList.add("show");
 
+  fetch("/.netlify/functions/subscribe", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: email })
+  }).catch(function() {});
+
+  var text = pendingText;
   var promptText = "You are an EU AI Act compliance expert. Analyse this AI use case and classify it. USE CASE: " + text + " Return ONLY valid JSON with no markdown, no backticks, nothing else. Use exactly this structure: {\"tier\":\"MINIMAL\",\"tier_label\":\"Minimal Risk\",\"tier_sub\":\"one sentence summary\",\"explanation\":\"2-3 sentences with article references\",\"obligations\":[\"ob1\",\"ob2\",\"ob3\"],\"checklist\":[\"c1\",\"c2\",\"c3\",\"c4\",\"c5\"],\"urgency\":\"LOW\"} tier must be exactly one of: MINIMAL, LIMITED, HIGH, PROHIBITED. urgency must be exactly one of: LOW, MEDIUM, HIGH, CRITICAL.";
 
   fetch("/.netlify/functions/classify", {
@@ -170,7 +191,7 @@ function runClassify() {
   })
   .catch(function(e) {
     document.getElementById("loading-state").classList.remove("show");
-    document.getElementById("input-state").style.display = "block";
+    document.getElementById("email-gate-state").style.display = "block";
     alert("Something went wrong: " + e.message);
   });
 }
@@ -218,8 +239,11 @@ function showResult(r) {
 function resetForm() {
   document.getElementById("result-state").classList.remove("show");
   document.getElementById("result-state").innerHTML = "";
+  document.getElementById("email-gate-state").style.display = "none";
+  document.getElementById("email-input").value = "";
   document.getElementById("use-case").value = "";
   document.getElementById("input-state").style.display = "block";
+  pendingText = "";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 </script>
