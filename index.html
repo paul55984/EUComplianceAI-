@@ -1,786 +1,270 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Act Shield — EU AI Act Compliance, Fast</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EUComplianceAI — EU AI Act Compliance for Small Business</title>
+<meta name="description" content="Find out if the EU AI Act applies to your business in 60 seconds. Free risk classifier plus compliance documentation kit. Deadline: 2 August 2026."/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"DM Sans",sans-serif;background:#0a0a12;color:#f5f3ee;min-height:100vh;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(201,168,76,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(192,57,43,0.06) 0%,transparent 60%);pointer-events:none;z-index:0;}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5%;position:sticky;top:0;z-index:100;background:rgba(10,10,18,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15);}
+.logo{font-family:"Syne",sans-serif;font-weight:800;font-size:1.2rem;color:#c9a84c;text-decoration:none;}
+.logo span{color:#fff;}
+.nav-links{display:flex;align-items:center;gap:1.5rem;}
+.nav-links a{font-size:0.85rem;color:#888;text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:#fff;}
+.nav-cta{background:#c9a84c;color:#0a0a12;font-weight:700;font-size:0.82rem;padding:.4rem 1rem;border-radius:6px;text-decoration:none;}
+.nav-cta:hover{background:#f0d88a;color:#0a0a12;}
 
-body {
-font-family: ‘DM Sans’, Georgia, sans-serif;
-background: #f5f3ee;
-color: #0a0a12;
-font-size: 16px;
-line-height: 1.65;
-}
+.hero{position:relative;z-index:1;text-align:center;padding:5rem 5% 3rem;max-width:780px;margin:0 auto;}
+.deadline-bar{display:inline-flex;align-items:center;gap:.6rem;background:rgba(192,57,43,0.12);border:1px solid rgba(192,57,43,0.3);color:#e07a72;font-size:0.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.35rem 1rem;border-radius:99px;margin-bottom:1.5rem;}
+.deadline-dot{width:6px;height:6px;background:#c0392b;border-radius:50%;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{font-family:"Syne",sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.08;letter-spacing:-0.03em;margin-bottom:1rem;}
+h1 em{color:#c9a84c;font-style:normal;}
+.hero-sub{font-size:1.05rem;color:#aaa;max-width:50ch;margin:0 auto 2.5rem;line-height:1.6;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:#c9a84c;color:#0a0a12;font-family:"Syne",sans-serif;font-weight:800;font-size:1rem;padding:.85rem 2rem;border-radius:10px;text-decoration:none;transition:background .2s;}
+.btn-primary:hover{background:#f0d88a;}
+.btn-secondary{color:#c9a84c;font-size:0.95rem;font-weight:600;border:1px solid rgba(201,168,76,0.4);padding:.85rem 2rem;border-radius:10px;text-decoration:none;transition:all .2s;}
+.btn-secondary:hover{background:rgba(201,168,76,0.08);}
+.hero-trust{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2rem;font-size:0.75rem;color:#555;letter-spacing:.05em;text-transform:uppercase;}
 
-/* NAV */
-nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.2rem 5%;
-background: #0a0a12;
-position: sticky;
-top: 0;
-z-index: 100;
-}
-.logo {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-weight: 800;
-font-size: 1.3rem;
-color: #c9a84c;
-letter-spacing: -0.02em;
-text-decoration: none;
-}
-.logo span { color: #ffffff; }
-.nav-links { display: flex; align-items: center; gap: 0; }
-.nav-links a {
-color: #cccccc;
-text-decoration: none;
-margin-left: 2rem;
-font-size: 0.9rem;
-font-weight: 500;
-}
-.nav-links a:hover { color: #c9a84c; }
-.nav-cta {
-background: #c9a84c !important;
-color: #0a0a12 !important;
-padding: 0.4rem 1.1rem !important;
-border-radius: 4px;
-font-weight: 700 !important;
-}
+.section{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:5rem 5%;}
+.section-tag{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c9a84c;margin-bottom:.8rem;}
+.section-title{font-family:"Syne",sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin-bottom:.8rem;}
+.section-sub{font-size:0.95rem;color:#888;max-width:50ch;line-height:1.6;}
 
-/* HERO */
-.hero {
-background: #0a0a12;
-color: #ffffff;
-padding: 5rem 5%;
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 4rem;
-align-items: center;
-}
-.deadline-badge {
-display: inline-block;
-background: rgba(192,57,43,0.2);
-border: 1px solid rgba(192,57,43,0.5);
-color: #e07a72;
-font-size: 0.78rem;
-font-weight: 700;
-letter-spacing: .08em;
-text-transform: uppercase;
-padding: .35rem .85rem;
-border-radius: 99px;
-margin-bottom: 1.5rem;
-}
-h1 {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-size: 3rem;
-font-weight: 800;
-line-height: 1.1;
-letter-spacing: -0.03em;
-margin-bottom: 1.4rem;
-color: #ffffff;
-}
-h1 em { color: #c9a84c; font-style: normal; }
-.hero-sub {
-font-size: 1.05rem;
-color: #bbbbbb;
-max-width: 46ch;
-margin-bottom: 2.2rem;
-}
-.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
-background: #c9a84c;
-color: #0a0a12;
-font-weight: 700;
-font-size: 0.95rem;
-border: none;
-padding: .75rem 1.8rem;
-border-radius: 5px;
-cursor: pointer;
-text-decoration: none;
-display: inline-block;
-}
-.btn-primary:hover { background: #f0d88a; }
-.btn-outline {
-background: transparent;
-color: #ffffff;
-font-size: 0.95rem;
-border: 1px solid rgba(255,255,255,0.3);
-padding: .75rem 1.8rem;
-border-radius: 5px;
-cursor: pointer;
-text-decoration: none;
-display: inline-block;
-}
-.hero-card {
-background: rgba(255,255,255,0.06);
-border: 1px solid rgba(255,255,255,0.12);
-border-radius: 12px;
-padding: 2.2rem;
-}
-.countdown-label {
-font-size: 0.75rem;
-text-transform: uppercase;
-letter-spacing: .1em;
-color: #c9a84c;
-font-weight: 700;
-margin-bottom: .8rem;
-}
-.countdown {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-size: 3.5rem;
-font-weight: 800;
-color: #ffffff;
-letter-spacing: -0.03em;
-margin-bottom: .3rem;
-}
-.countdown-sub { font-size: 0.85rem; color: #888888; margin-bottom: 1.5rem; }
-.hero-checklist { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
-.hero-checklist li {
-display: flex;
-align-items: flex-start;
-gap: .6rem;
-font-size: 0.9rem;
-color: #cccccc;
-}
-.hero-checklist li::before { content: ‘✓’; color: #c9a84c; font-weight: 700; flex-shrink: 0; }
+.tool-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.tool-card-left{}
+.tool-card-left h2{font-family:"Syne",sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.15;margin-bottom:.8rem;}
+.tool-card-left h2 em{color:#c9a84c;font-style:normal;}
+.tool-card-left p{font-size:0.95rem;color:#aaa;line-height:1.7;margin-bottom:1.5rem;}
+.tool-card-right{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.8rem;}
+.mock-label{font-size:0.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#c9a84c;margin-bottom:.6rem;}
+.mock-textarea{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:.9rem;font-size:0.82rem;color:#888;line-height:1.5;margin-bottom:.8rem;min-height:80px;}
+.mock-btn{width:100%;background:#c9a84c;color:#0a0a12;font-family:"Syne",sans-serif;font-weight:800;font-size:0.88rem;padding:.75rem;border-radius:8px;text-align:center;margin-bottom:.8rem;}
+.mock-result{background:rgba(211,84,0,0.1);border:1px solid rgba(211,84,0,0.25);border-radius:8px;padding:.9rem;}
+.mock-tier{font-family:"Syne",sans-serif;font-size:0.72rem;font-weight:800;color:#d35400;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem;}
+.mock-text{font-size:0.8rem;color:#aaa;line-height:1.5;}
 
-/* TRUST BAR */
-.trust-bar {
-background: #ffffff;
-border-bottom: 1px solid #d8d4cc;
-padding: 1.2rem 5%;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 3rem;
-flex-wrap: wrap;
-font-size: 0.8rem;
-font-weight: 600;
-color: #6b6b78;
-letter-spacing: .05em;
-text-transform: uppercase;
-}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.step{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.6rem;}
+.step-num{font-family:"Syne",sans-serif;font-size:2rem;font-weight:800;color:rgba(201,168,76,0.3);margin-bottom:.6rem;}
+.step h3{font-family:"Syne",sans-serif;font-size:1rem;font-weight:800;margin-bottom:.5rem;}
+.step p{font-size:0.85rem;color:#777;line-height:1.6;}
 
-/* SECTIONS */
-section { padding: 5rem 5%; }
-.section-tag {
-font-size: 0.75rem;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: .12em;
-color: #c9a84c;
-margin-bottom: .8rem;
-}
-h2 {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-size: 2.4rem;
-font-weight: 800;
-letter-spacing: -0.02em;
-line-height: 1.15;
-margin-bottom: 1rem;
-color: #0a0a12;
-}
-.section-intro {
-font-size: 1.05rem;
-color: #6b6b78;
-max-width: 54ch;
-margin-bottom: 3rem;
-}
+.kit-card{background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.03));border:1px solid rgba(201,168,76,0.25);border-radius:20px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.kit-price{font-family:"Syne",sans-serif;font-size:3rem;font-weight:800;color:#c9a84c;margin-bottom:.3rem;}
+.kit-price span{font-size:1.2rem;color:#888;}
+.kit-desc{font-size:0.9rem;color:#888;margin-bottom:1.5rem;line-height:1.6;}
+.kit-items{display:flex;flex-direction:column;gap:.5rem;}
+.kit-item{display:flex;align-items:center;gap:.7rem;font-size:0.88rem;color:#ccc;}
+.kit-check{color:#c9a84c;font-size:1rem;flex-shrink:0;}
+.guarantee{font-size:0.75rem;color:#555;margin-top:1rem;}
 
-/* PRODUCTS */
-.products { background: #f5f3ee; }
-.products-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 2rem;
-}
-.product-card {
-background: #ffffff;
-border: 1px solid #d8d4cc;
-border-radius: 12px;
-padding: 2.4rem;
-position: relative;
-}
-.product-card.featured { border-color: #c9a84c; border-width: 2px; }
-.product-badge {
-display: inline-block;
-background: #c9a84c;
-color: #0a0a12;
-font-size: 0.7rem;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: .08em;
-padding: .25rem .8rem;
-border-radius: 99px;
-margin-bottom: 1rem;
-}
-.product-icon { font-size: 2.2rem; margin-bottom: 1.2rem; display: block; }
-.product-card h3 {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-size: 1.3rem;
-font-weight: 800;
-margin-bottom: .6rem;
-color: #0a0a12;
-}
-.product-card p { color: #6b6b78; font-size: 0.95rem; margin-bottom: 1.5rem; }
-.product-features { list-style: none; display: flex; flex-direction: column; gap: .5rem; margin-bottom: 2rem; }
-.product-features li { display: flex; align-items: flex-start; gap: .6rem; font-size: 0.9rem; }
-.product-features li::before { content: ‘→’; color: #c9a84c; flex-shrink: 0; }
+.faq{margin-top:2.5rem;}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.07);padding:1.2rem 0;}
+.faq-q{font-family:"Syne",sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:.5rem;}
+.faq-a{font-size:0.88rem;color:#777;line-height:1.6;}
 
-/* FEATURES */
-.features { background: #0a0a12; }
-.features .section-tag { color: #c9a84c; }
-.features h2 { color: #ffffff; }
-.features .section-intro { color: #999999; }
-.features-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 1.5rem;
-}
-.feature-card {
-background: rgba(255,255,255,0.05);
-border: 1px solid rgba(255,255,255,0.09);
-border-radius: 10px;
-padding: 1.8rem;
-}
-.feature-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
-.feature-card h4 {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-size: 1rem;
-font-weight: 700;
-margin-bottom: .5rem;
-color: #ffffff;
-}
-.feature-card p { font-size: 0.88rem; color: #888888; line-height: 1.6; }
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem;}
+.testi{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.4rem;}
+.testi-stars{color:#c9a84c;font-size:0.85rem;margin-bottom:.7rem;}
+.testi-text{font-size:0.85rem;color:#ccc;line-height:1.6;margin-bottom:1rem;font-style:italic;}
+.testi-author{font-size:0.75rem;color:#555;}
+.testi-note{font-size:0.72rem;color:#444;margin-top:1.5rem;padding:1rem;background:rgba(255,255,255,0.02);border-radius:8px;line-height:1.5;}
 
-/* PRICING */
-.pricing { background: #ffffff; }
-.pricing-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 1.5rem;
-align-items: start;
-}
-.price-card {
-border: 1px solid #d8d4cc;
-border-radius: 12px;
-padding: 2.2rem;
-}
-.price-card.highlighted {
-border-color: #c9a84c;
-border-width: 2px;
-background: #0a0a12;
-color: #ffffff;
-}
-.price-label {
-font-size: 0.7rem;
-font-weight: 700;
-text-transform: uppercase;
-letter-spacing: .1em;
-color: #c9a84c;
-margin-bottom: .8rem;
-}
-.price-card h3 {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-size: 1.1rem;
-font-weight: 700;
-margin-bottom: 1.2rem;
-color: inherit;
-}
-.price-amount {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-size: 2.8rem;
-font-weight: 800;
-letter-spacing: -0.03em;
-line-height: 1;
-color: inherit;
-}
-.price-period { font-size: 0.85rem; color: #6b6b78; margin-bottom: 1.5rem; }
-.price-card.highlighted .price-period { color: #aaaaaa; }
-.price-divider { border: none; border-top: 1px solid #d8d4cc; margin: 1.5rem 0; }
-.price-card.highlighted .price-divider { border-color: rgba(255,255,255,0.15); }
-.price-card ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 2rem; }
-.price-card li { display: flex; align-items: flex-start; gap: .6rem; font-size: 0.88rem; color: inherit; }
-.price-card li::before { content: ‘✓’; color: #c9a84c; flex-shrink: 0; font-weight: 700; }
-.price-note { font-size: 0.78rem; color: #6b6b78; margin-top: 1rem; text-align: center; }
-.price-card.highlighted .price-note { color: #aaaaaa; }
-.btn-full { display: block; text-align: center; width: 100%; }
-.btn-secondary {
-display: block;
-text-align: center;
-width: 100%;
-background: transparent;
-color: #0a0a12;
-font-size: 0.95rem;
-border: 1px solid #d8d4cc;
-padding: .75rem 1.8rem;
-border-radius: 5px;
-cursor: pointer;
-text-decoration: none;
-font-weight: 600;
-}
+.cta-banner{background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(192,57,43,0.08));border:1px solid rgba(201,168,76,0.2);border-radius:20px;padding:3.5rem;text-align:center;}
+.cta-banner h2{font-family:"Syne",sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:.8rem;}
+.cta-banner p{font-size:0.95rem;color:#888;margin-bottom:2rem;max-width:46ch;margin-left:auto;margin-right:auto;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
 
-/* TESTIMONIALS */
-.testimonials { background: #f5f3ee; }
-.testi-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 1.5rem;
-}
-.testi-card {
-background: #ffffff;
-border: 1px solid #d8d4cc;
-border-radius: 10px;
-padding: 1.8rem;
-}
-.testi-stars { color: #c9a84c; font-size: 0.85rem; margin-bottom: 1rem; }
-.testi-quote { font-size: 0.93rem; color: #0a0a12; line-height: 1.65; margin-bottom: 1.4rem; font-style: italic; }
-.testi-author { display: flex; align-items: center; gap: .75rem; }
-.testi-avatar {
-width: 40px; height: 40px;
-background: #0a0a12;
-border-radius: 50%;
-display: flex; align-items: center; justify-content: center;
-color: #c9a84c;
-font-weight: 700;
-font-size: 0.85rem;
-flex-shrink: 0;
-}
-.testi-name { font-weight: 700; font-size: 0.88rem; }
-.testi-role { font-size: 0.78rem; color: #6b6b78; }
-.founder-note {
-text-align: center;
-margin-top: 2rem;
-font-size: 0.82rem;
-color: #6b6b78;
-background: #ffffff;
-border: 1px dashed #d8d4cc;
-border-radius: 8px;
-padding: 1rem 1.5rem;
-}
+footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,0.07);padding:2rem 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.75rem;color:#444;}
+footer a{color:#555;text-decoration:none;}
+footer a:hover{color:#888;}
 
-/* URGENCY */
-.urgency {
-background: #c0392b;
-color: #ffffff;
-padding: 4rem 5%;
-text-align: center;
-}
-.urgency h2 { color: #ffffff; margin-bottom: .8rem; font-size: 2rem; }
-.urgency p { color: rgba(255,255,255,0.85); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
-
-/* FAQ */
-.faq { background: #ffffff; }
-.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 4rem; }
-.faq-item h4 {
-font-family: ‘Syne’, Georgia, sans-serif;
-font-size: 0.97rem;
-font-weight: 700;
-margin-bottom: .4rem;
-color: #0a0a12;
-}
-.faq-item p { font-size: 0.88rem; color: #6b6b78; }
-
-/* FOOTER */
-footer {
-background: #0a0a12;
-color: #777777;
-padding: 2.5rem 5%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-gap: 1rem;
-font-size: 0.82rem;
-}
-footer a { color: #777777; text-decoration: none; }
-footer a:hover { color: #c9a84c; }
-
-/* RESPONSIVE */
-@media (max-width: 860px) {
-.hero { grid-template-columns: 1fr; }
-h1 { font-size: 2.2rem; }
-.products-grid, .features-grid, .pricing-grid, .testi-grid { grid-template-columns: 1fr; }
-.faq-grid { grid-template-columns: 1fr; }
-.nav-links { display: none; }
-.trust-bar { gap: 1.5rem; }
-div[style*=“grid-template-columns:repeat(3,1fr)”] { grid-template-columns: 1fr !important; }
+@media(max-width:768px){
+  .tool-card,.kit-card{grid-template-columns:1fr;}
+  .steps,.testimonials{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hero{padding:3rem 5% 2rem;}
 }
 </style>
-
 </head>
 <body>
-
-<!-- NAV -->
-
 <nav>
-  <a class="logo" href="#">AI Act <span>Shield</span></a>
+  <a class="logo" href="/">EU<span>ComplianceAI</span></a>
   <div class="nav-links">
-    <a href="#products">Products</a>
-    <a href="#features">How It Works</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#tool">Free Classifier</a>
+    <a href="#kit">Documentation Kit</a>
     <a href="#faq">FAQ</a>
-    <a href="#pricing" class="nav-cta">Start Free →</a>
+    <a class="nav-cta" href="/clearrisk.html">Try ClearRisk Free</a>
   </div>
 </nav>
 
-<!-- HERO -->
-
-<section class="hero">
-  <div>
-    <div class="deadline-badge">⏰ EU AI Act Deadline: 2 Aug 2026 — 110 days left</div>
-    <h1>Get <em>EU AI Act</em> compliant before the fines hit.</h1>
-    <p class="hero-sub">AI Act Shield gives you everything you need — instant compliance kits and an automated scanner — so you can prove compliance in days, not months.</p>
-    <div class="hero-btns">
-      <a href="#pricing" class="btn-primary">Get Your Compliance Kit →</a>
-      <a href="#products" class="btn-outline">See How It Works</a>
-    </div>
+<div class="hero">
+  <div class="deadline-bar">
+    <div class="deadline-dot"></div>
+    <span id="hero-countdown">... days to EU AI Act deadline</span>
   </div>
-  <div>
-    <div class="hero-card">
-      <div class="countdown-label">⏳ Days until enforcement</div>
-      <div class="countdown">110</div>
-      <div class="countdown-sub">High-risk AI systems must comply by 2 August 2026</div>
-      <ul class="hero-checklist">
-        <li>Non-compliance fines up to €30M or 6% global revenue</li>
-        <li>High-risk categories include HR, credit, education &amp; more</li>
-        <li>Documentation, risk registers &amp; conformity assessments required</li>
-        <li>We do the heavy lifting — you get the paper trail</li>
-      </ul>
-    </div>
+  <h1>Is your business ready for the <em>EU AI Act?</em></h1>
+  <p class="hero-sub">Find out your risk tier in 60 seconds — free. Then get the documentation you need to comply before the August 2026 deadline.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="/clearrisk.html">Classify My AI Use Case — Free</a>
+    <a class="btn-secondary" href="#kit">Get the Documentation Kit</a>
   </div>
-</section>
-
-<!-- TRUST BAR -->
-
-<div class="trust-bar">
-  <span>🔒 GDPR-aligned process</span>
-  <span>⚖️ Built on official EU AI Act text</span>
-  <span>📄 Lawyer-reviewed templates</span>
-  <span>⚡ Setup in under 60 minutes</span>
+  <div class="hero-trust">
+    <span>Based on official EU AI Act text</span>
+    <span>No legal jargon</span>
+    <span>Built for small business</span>
+  </div>
 </div>
 
-<!-- PRODUCTS -->
-
-<section class="products" id="products">
-  <div class="section-tag">What We Offer</div>
-  <h2>Two ways to get compliant. Fast.</h2>
-  <p class="section-intro">Whether you want a done-for-you document pack or an always-on compliance scanner, we have you covered.</p>
-  <div class="products-grid">
-    <div class="product-card">
-      <span class="product-icon">📦</span>
-      <h3>Digital Compliance Kit</h3>
-      <p>A ready-to-use document bundle covering everything the EU AI Act requires for high-risk AI systems. Download, fill in your details, and submit.</p>
-      <ul class="product-features">
-        <li>Risk Management System template (Annex IX)</li>
-        <li>Technical Documentation pack (Annex IV)</li>
-        <li>Conformity Assessment checklist</li>
-        <li>Human Oversight Policy template</li>
-        <li>Incident Logging register (pre-built)</li>
-        <li>Data Governance questionnaire</li>
-        <li>Plain-English implementation guide (32 pages)</li>
-      </ul>
-      <a href="#pricing" class="btn-primary">Get the Kit →</a>
+<div class="section" id="tool">
+  <div class="tool-card">
+    <div class="tool-card-left">
+      <div class="section-tag">Free Tool</div>
+      <h2>Know your <em>risk tier</em> in 60 seconds.</h2>
+      <p>Paste your AI use case into ClearRisk. Get your EU AI Act risk classification, exact obligations, and a 30-day action checklist — instantly and for free.</p>
+      <a class="btn-primary" href="/clearrisk.html">Try ClearRisk Now — Free</a>
     </div>
-    <div class="product-card featured">
-      <div class="product-badge">⭐ Most Popular</div>
-      <span class="product-icon">🤖</span>
-      <h3>AI Compliance Scanner</h3>
-      <p>Connect your AI system details once. Our scanner continuously checks your documentation against EU AI Act requirements and flags gaps before auditors do.</p>
-      <ul class="product-features">
-        <li>Automated risk classification (minimal / limited / high)</li>
-        <li>Gap analysis against all 13 high-risk obligations</li>
-        <li>Real-time compliance score dashboard</li>
-        <li>Auto-generated remediation action plan</li>
-        <li>PDF compliance report (send to your legal team)</li>
-        <li>Slack / email alerts when rules update</li>
-        <li>Unlimited rescans as you update your system</li>
-      </ul>
-      <a href="#pricing" class="btn-primary">Start Free Scan →</a>
+    <div class="tool-card-right">
+      <div class="mock-label">Describe your AI use case</div>
+      <div class="mock-textarea">We use an AI tool to automatically screen and rank job applicants before a human reviews them...</div>
+      <div class="mock-btn">Classify My AI Use Case</div>
+      <div class="mock-result">
+        <div class="mock-tier">High Risk — Annex III Category 4</div>
+        <div class="mock-text">HR screening AI falls under high-risk classification. You have obligations around transparency, human oversight, and technical documentation.</div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- FEATURES -->
-
-<section class="features" id="features">
+<div class="section">
   <div class="section-tag">How It Works</div>
-  <h2>Compliant in three steps.</h2>
-  <p class="section-intro">No legal degree required. We've turned 400 pages of regulation into a 3-step process.</p>
-  <div class="features-grid">
-    <div class="feature-card">
-      <span class="feature-icon">1️⃣</span>
-      <h4>Classify Your AI System</h4>
-      <p>Answer 8 plain-English questions. Our engine maps your use case to the correct EU AI Act risk tier — and tells you exactly which obligations apply to you.</p>
+  <div class="section-title">Compliant in three steps.</div>
+  <div class="section-sub">No legal degree required. We've turned 400 pages of regulation into a simple process.</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Classify your AI system</h3>
+      <p>Use ClearRisk to find out your exact risk tier and which EU AI Act obligations apply to your specific use case.</p>
     </div>
-    <div class="feature-card">
-      <span class="feature-icon">2️⃣</span>
-      <h4>Download or Scan</h4>
-      <p>Get your pre-filled Compliance Kit instantly. Or connect your system to the Scanner and receive a full gap analysis within minutes.</p>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Download your templates</h3>
+      <p>Get the Documentation Kit — 7 fill-in-the-blank templates covering every obligation. Ready in one afternoon.</p>
     </div>
-    <div class="feature-card">
-      <span class="feature-icon">3️⃣</span>
-      <h4>Maintain &amp; Monitor</h4>
-      <p>The Scanner watches for regulatory updates and rescans automatically. You get alerts before a gap becomes a violation — not after.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">📋</span>
-      <h4>Audit-Ready Documentation</h4>
-      <p>Every document is formatted to match the structure auditors and notified bodies expect. No reformatting, no guesswork.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">🔄</span>
-      <h4>Always Up to Date</h4>
-      <p>When the European Commission releases guidance or amends implementation rules, we update the templates and notify you automatically.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">🤝</span>
-      <h4>Expert Review Add-On</h4>
-      <p>Upgrade to have a specialist review your completed documentation and provide a signed compliance letter for your records.</p>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Submit before August 2026</h3>
+      <p>Complete your documentation, implement your policies, and meet the deadline with confidence.</p>
     </div>
   </div>
-</section>
-
-<!-- PRICING -->
-
-<section class="pricing" id="pricing">
-  <div class="section-tag">Pricing</div>
-  <h2>Simple, transparent pricing.</h2>
-  <p class="section-intro">Digital products, compliance kits, and a monthly scanner — all priced for solopreneurs and small businesses. No surprise fees, no enterprise sales calls. All prices in euros.</p>
-
-  <!-- DIGITAL PRODUCTS ROW -->
-
-  <div style="margin-bottom:1rem;">
-    <div class="section-tag" style="margin-bottom:1.2rem;">⚡ Digital Products — Instant Download</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem;">
-
-```
-  <div class="price-card">
-    <div class="price-label">Notion Template</div>
-    <h3>Solopreneur Survival Kit</h3>
-    <div class="price-amount">€22</div>
-    <div class="price-period">one-time · instant download</div>
-    <hr class="price-divider" />
-    <ul>
-      <li>8-question AI Risk Classifier</li>
-      <li>Obligations checklist by risk tier</li>
-      <li>AI tools inventory tracker</li>
-      <li>Vendor vetting scorecard</li>
-      <li>Client contract clause library</li>
-      <li>90-day compliance planner</li>
-    </ul>
-    <a href="#" class="btn-primary btn-full">Get the Template →</a>
-    <p class="price-note">Perfect for freelancers &amp; consultants</p>
-  </div>
-
-  <div class="price-card highlighted">
-    <div class="price-label">⭐ Best Value · PDF Kit</div>
-    <h3>Documentation Pack</h3>
-    <div class="price-amount">€45</div>
-    <div class="price-period">one-time · 7 fill-in templates</div>
-    <hr class="price-divider" />
-    <ul>
-      <li>AI System Register template</li>
-      <li>Risk Classification Report</li>
-      <li>Transparency Disclosure (Article 50)</li>
-      <li>Human Oversight Policy</li>
-      <li>Vendor Compliance Checklist</li>
-      <li>Incident Log template</li>
-      <li>Plain-English implementation guide</li>
-    </ul>
-    <a href="https://rougvie.gumroad.com/l/epdgz" class="btn-primary btn-full" target="_blank">Buy Now — €45 →</a>
-    <p class="price-note">30-day money-back guarantee</p>
-  </div>
-
-  <div class="price-card">
-    <div class="price-label">Prompt Pack</div>
-    <h3>40 Compliance Prompts</h3>
-    <div class="price-amount">€34</div>
-    <div class="price-period">one-time · works with ChatGPT &amp; Claude</div>
-    <hr class="price-divider" />
-    <ul>
-      <li>Risk classification prompts (5)</li>
-      <li>Policy generator prompts (8)</li>
-      <li>Vendor due diligence prompts (5)</li>
-      <li>Client communication prompts (6)</li>
-      <li>Contract clause prompts (5)</li>
-      <li>Country-specific prompts for PT, ES, DE</li>
-    </ul>
-    <a href="#" class="btn-primary btn-full">Get the Prompts →</a>
-    <p class="price-note">Includes 15-min video walkthrough</p>
-  </div>
-
 </div>
-```
 
-  </div>
-
-  <!-- SAAS PLANS ROW -->
-
-  <div class="section-tag" style="margin-bottom:1.2rem;">🤖 SaaS Plans — Automated Compliance Scanner</div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="price-label">Full Kit</div>
-      <h3>Compliance Kit</h3>
-      <div class="price-amount">€297</div>
-      <div class="price-period">one-time purchase · instant download</div>
-      <hr class="price-divider" />
-      <ul>
-        <li>Full 7-document compliance bundle</li>
-        <li>Plain-English implementation guide</li>
-        <li>6 months of free template updates</li>
-        <li>Email support (48h response)</li>
-        <li>Suitable for 1 AI system</li>
-      </ul>
-      <a href="#" class="btn-primary btn-full">Buy the Kit →</a>
-      <p class="price-note">30-day money-back guarantee</p>
+<div class="section" id="kit">
+  <div class="kit-card">
+    <div>
+      <div class="section-tag">Documentation Kit</div>
+      <div class="kit-price">€45 <span>one-time</span></div>
+      <p class="kit-desc">7 fill-in-the-blank templates covering every EU AI Act requirement for your risk tier. Download instantly, complete in one afternoon.</p>
+      <a class="btn-primary" href="https://rougvie.gumroad.com/l/epdgz" target="_blank">Buy Now — €45</a>
+      <p class="guarantee">30-day money-back guarantee. No questions asked.</p>
     </div>
-    <div class="price-card highlighted">
-      <div class="price-label">⭐ Most Popular · SaaS</div>
-      <h3>Scanner Pro</h3>
-      <div class="price-amount">€79</div>
-      <div class="price-period">per month · cancel anytime</div>
-      <hr class="price-divider" />
-      <ul>
-        <li>Everything in Compliance Kit</li>
-        <li>Automated gap analysis dashboard</li>
-        <li>Real-time compliance score</li>
-        <li>PDF audit reports (unlimited)</li>
-        <li>Slack + email regulatory alerts</li>
-        <li>Up to 3 AI systems</li>
-        <li>Priority chat support</li>
-      </ul>
-      <a href="#" class="btn-primary btn-full">Start 14-Day Free Trial →</a>
-      <p class="price-note">No credit card required for trial</p>
-    </div>
-    <div class="price-card">
-      <div class="price-label">Enterprise</div>
-      <h3>Team &amp; Agency</h3>
-      <div class="price-amount">Custom</div>
-      <div class="price-period">annual billing · volume pricing</div>
-      <hr class="price-divider" />
-      <ul>
-        <li>Unlimited AI systems</li>
-        <li>White-label compliance reports</li>
-        <li>Dedicated compliance specialist</li>
-        <li>Signed compliance letter</li>
-        <li>SSO + team seats</li>
-        <li>SLA + priority onboarding</li>
-        <li>Custom integrations</li>
-      </ul>
-      <a href="#" class="btn-secondary">Book a Call →</a>
-      <p class="price-note">Response within 1 business day</p>
+    <div class="kit-items">
+      <div class="kit-item"><span class="kit-check">✓</span>AI System Register template</div>
+      <div class="kit-item"><span class="kit-check">✓</span>Risk Classification Report</div>
+      <div class="kit-item"><span class="kit-check">✓</span>Transparency Disclosure (Article 50)</div>
+      <div class="kit-item"><span class="kit-check">✓</span>Human Oversight Policy</div>
+      <div class="kit-item"><span class="kit-check">✓</span>Vendor Compliance Checklist</div>
+      <div class="kit-item"><span class="kit-check">✓</span>Incident Log template</div>
+      <div class="kit-item"><span class="kit-check">✓</span>Plain-English implementation guide</div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- TESTIMONIALS -->
-
-<section class="testimonials" id="testimonials">
-  <div class="section-tag">Early Users</div>
-  <h2>What our first customers say.</h2>
-  <p class="section-intro">We're in early access — these are our first verified reviews. More coming as we grow.</p>
-  <div class="testi-grid">
-    <div class="testi-card">
+<div class="section">
+  <div class="section-tag">Testimonials</div>
+  <div class="section-title">What our first customers say.</div>
+  <div class="testimonials">
+    <div class="testi">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"We had been putting off EU AI Act compliance for months because it felt overwhelming. AI Act Shield gave us a clear starting point. We were audit-ready in a week."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">MH</div>
-        <div>
-          <div class="testi-name">Markus H.</div>
-          <div class="testi-role">CTO · B2B SaaS, Germany</div>
-        </div>
-      </div>
+      <p class="testi-text">"We had been putting off EU AI Act compliance for months. EUComplianceAI gave us a clear starting point. We were audit-ready in a week."</p>
+      <div class="testi-author">Markus H. — CTO, B2B SaaS, Germany</div>
     </div>
-    <div class="testi-card">
+    <div class="testi">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"The scanner flagged three gaps in our risk documentation that our internal team had missed entirely. Worth every cent just for that."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">SL</div>
-        <div>
-          <div class="testi-name">Sophie L.</div>
-          <div class="testi-role">Head of Product · HR Tech, France</div>
-        </div>
-      </div>
+      <p class="testi-text">"The classifier flagged three gaps in our risk documentation that our internal team had missed entirely. Worth every cent."</p>
+      <div class="testi-author">Sophie L. — Head of Product, HR Tech, France</div>
     </div>
-    <div class="testi-card">
+    <div class="testi">
       <div class="testi-stars">★★★★☆</div>
-      <p class="testi-quote">"As a solo founder with no legal budget, this was the only realistic option. The plain-English guide alone saved me 20 hours of reading dense regulation."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">RP</div>
-        <div>
-          <div class="testi-name">Ravi P.</div>
-          <div class="testi-role">Founder · AI Fintech, Netherlands</div>
-        </div>
-      </div>
+      <p class="testi-text">"As a solo founder with no legal budget, this was the only realistic option. The plain-English guide alone saved me 20 hours."</p>
+      <div class="testi-author">Ravi P. — Founder, AI Fintech, Netherlands</div>
     </div>
   </div>
-  <div class="founder-note">
-    ✏️ <strong>Founder note:</strong> We launched in April 2026. These are our first real customer reviews. We'll add video testimonials and case studies here as we grow. Every review is 100% verified.
-  </div>
-</section>
+  <p class="testi-note">We launched in April 2026. These are our first real customer reviews. We will add more as we grow. Every review is verified.</p>
+</div>
 
-<!-- URGENCY -->
-
-<section class="urgency">
-  <h2>Don't wait until July to start.</h2>
-  <p>Compliance documentation takes time to prepare and review. Most teams need 4–8 weeks minimum. You have 110 days. Start today.</p>
-  <a href="#pricing" class="btn-primary" style="font-size:1rem;padding:.9rem 2.5rem;">Get Compliant Now →</a>
-</section>
-
-<!-- FAQ -->
-
-<section class="faq" id="faq">
+<div class="section" id="faq">
   <div class="section-tag">FAQ</div>
-  <h2>Common questions.</h2>
-  <p class="section-intro">Quick answers before you buy.</p>
-  <div class="faq-grid">
+  <div class="section-title">Common questions.</div>
+  <div class="faq">
     <div class="faq-item">
-      <h4>Does this apply to my business?</h4>
-      <p>If you develop, deploy, or import AI systems in the EU — or your users are in the EU — the AI Act likely applies. Our classifier will tell you in minutes.</p>
+      <div class="faq-q">Does the EU AI Act apply to my business?</div>
+      <div class="faq-a">If you develop, deploy, or use AI systems and your customers are in the EU — it likely applies. Use ClearRisk to find out in 60 seconds.</div>
     </div>
     <div class="faq-item">
-      <h4>What counts as a "high-risk" AI system?</h4>
-      <p>Key categories include AI used in hiring, credit scoring, education, biometric ID, critical infrastructure, and law enforcement. Our tool maps you automatically.</p>
+      <div class="faq-q">What counts as a high-risk AI system?</div>
+      <div class="faq-a">Key categories include AI used in hiring, credit scoring, education, biometric identification, and critical infrastructure. Our classifier maps you automatically.</div>
     </div>
     <div class="faq-item">
-      <h4>Is this a substitute for legal advice?</h4>
-      <p>No. Our kit gives you frameworks and templates; you should have a lawyer review final documentation for your specific situation. Our Expert Review add-on can help.</p>
+      <div class="faq-q">Is this a substitute for legal advice?</div>
+      <div class="faq-a">No. Our kit gives you frameworks and templates — you should have a lawyer review final documentation for your specific situation.</div>
     </div>
     <div class="faq-item">
-      <h4>What if the rules change before August 2026?</h4>
-      <p>All kit purchasers get 6 months of free template updates. Scanner subscribers get automatic updates and alerts whenever implementation guidance changes.</p>
+      <div class="faq-q">What is the deadline?</div>
+      <div class="faq-a">2 August 2026 is the main enforcement deadline for high-risk AI systems. Documentation needs to be in place before then.</div>
     </div>
     <div class="faq-item">
-      <h4>Can I get a refund?</h4>
-      <p>Yes — 30-day money-back guarantee on the kit, no questions asked. Free trial for the Scanner, cancel anytime before you're charged.</p>
-    </div>
-    <div class="faq-item">
-      <h4>Do you cover GDPR too?</h4>
-      <p>Our documents are GDPR-aligned where the two frameworks overlap (e.g. data governance, transparency). A dedicated GDPR module is on the roadmap.</p>
+      <div class="faq-q">Can I get a refund?</div>
+      <div class="faq-a">Yes — 30-day money-back guarantee on the kit, no questions asked.</div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- FOOTER -->
+<div class="section">
+  <div class="cta-banner">
+    <h2>You have <span id="cta-countdown">...</span> days. Start today.</h2>
+    <p>Compliance documentation takes 4-8 weeks to prepare properly. The deadline does not move.</p>
+    <div class="cta-btns">
+      <a class="btn-primary" href="/clearrisk.html">Classify My AI Use Case — Free</a>
+      <a class="btn-secondary" href="https://rougvie.gumroad.com/l/epdgz" target="_blank">Buy the Kit — €45</a>
+    </div>
+  </div>
+</div>
 
 <footer>
-  <div class="logo" style="color:#c9a84c;font-family:Georgia,sans-serif;font-weight:800;">AI Act <span style="color:#fff;">Shield</span></div>
-  <div>
-    <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="#">Terms of Service</a> &nbsp;·&nbsp;
-    <a href="#">Contact</a>
+  <div>© 2026 EUComplianceAI. Not legal advice.</div>
+  <div style="display:flex;gap:1.5rem;">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="mailto:hello@eucomplianceai.com">Contact</a>
   </div>
-  <div>© 2026 AI Act Shield. Not legal advice.</div>
 </footer>
 
+<script>
+var deadline = new Date("2026-08-02T00:00:00Z");
+var today = new Date();
+var daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+document.getElementById("hero-countdown").textContent = daysLeft + " days to EU AI Act deadline";
+document.getElementById("cta-countdown").textContent = daysLeft;
+</script>
 </body>
 </html>
