@@ -225,10 +225,12 @@ function showResult(r) {
   html += "<div class=\"list\">" + obs + "</div>";
   html += "<div class=\"section-title\">Your 30-day action checklist</div>";
   html += "<div class=\"list\">" + chk + "</div>";
-  html += "<div class=\"cta-strip\"><h3>Get the complete documentation pack</h3>";
-  html += "<p>7 fill-in-the-blank templates covering every EU AI Act requirement, ready in one afternoon.</p>";
-  html += "<div class=\"cta-btns\"><a href=\"https://rougvie.gumroad.com/l/epdgz\" target=\"_blank\" class=\"btn-gold\">Get the Kit - 45 euros</a>";
-  html += "<a href=\"/\" class=\"btn-ghost\">Learn More</a></div></div>";
+  html += "<div class=\"cta-strip\"><h3>Get compliant before August 2026</h3>";
+  html += "<p>Choose your next step:</p>";
+  html += "<div class=\"cta-btns\">";
+  html += "<a href=\"https://rougvie.gumroad.com/l/euaichecklist\" target=\"_blank\" class=\"btn-ghost\">Checklist PDF - 9 euros</a>";
+  html += "<a href=\"https://rougvie.gumroad.com/l/epdgz\" target=\"_blank\" class=\"btn-gold\">Full Documentation Kit - 45 euros</a>";
+  html += "</div></div>";
   html += "<button class=\"btn-new\" id=\"reset-btn\">Classify a different use case</button>";
 
   document.getElementById("result-state").innerHTML = html;
